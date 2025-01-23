@@ -1,9 +1,8 @@
-# Define variables
+#Creating variables
 length = 10
 width = 5
 
-# Calculate the area
+#calculate the area
 area = length * width
-
-# Print the result
+# results
 print(f"The area of the rectangle is: {area}")

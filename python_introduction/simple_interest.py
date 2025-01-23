@@ -1,10 +1,9 @@
-# Define variables
-principal = 1000  # Principal amount in dollars
-rate = 0.05       # Annual interest rate as a decimal
-time = 3          # Time in years
+#Create Variables
+principal = 1000
+rate = 0.05 #this is the 5% annual interest rate.
+time = 3 #3 years
 
-# Calculate simple interest
+#Calculation of simple interest
 interest = principal * rate * time
 
-# Print the result
 print(f"The simple interest is: {interest}")

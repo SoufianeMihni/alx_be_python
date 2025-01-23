@@ -1,8 +1,7 @@
-# Define the variable for the number of hours
+#Creating Variables
+#Number of  hours to convert to seconds
 hours = 2
-
-# Calculate the number of seconds in the given hours
+#Convert hours to seconds
 seconds = hours * 3600
-
-# Print the result
+#results
 print(f"{hours} hour(s) is {seconds} seconds.")

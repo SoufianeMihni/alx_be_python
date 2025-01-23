@@ -1,18 +1,7 @@
-# multiplication_table.py
+# Prompt the user for a number
+number = int(input("Enter a number to see its multiplication table: "))
 
-def main():
-    try:
-        # Prompt the user for a number
-        number = int(input("Enter a number to see its multiplication table: "))
-
-        # Generate and print the multiplication table
-        for i in range(1, 11):
-            product = number * i
-            print(f"{number} * {i} = {product}")
-
-    except ValueError:
-        print("Invalid input. Please enter a valid integer.")
-
-# Run the main function
-if __name__ == "__main__":
-    main()
+# Loop through numbers 1 to 10
+for i in range(1, 11):
+    # Print the multiplication table in the format X * Y = Z
+    print(f"{number} * {i} = {number * i}")
