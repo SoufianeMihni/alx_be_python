@@ -1,33 +1,68 @@
-# bank_account.py
+Objective: Understand the fundamentals of OOP in Python by implementing a BankAccount class that encapsulates banking operations. Use command line arguments to interact with instances of this class.
 
-class BankAccount:
-     # The __init__ method initializes the account balance when a new BankAccount object is created.
-     def __init__(self, initial_balance=0):
-        # account_balance is a private attribute (indicated by the underscore) to ensure encapsulation
-        self._account_balance = initial_balance
+Task Description:
+You will create two Python scripts: bank_account.py, which contains the BankAccount class, and main-0.py, which interfaces with the class through command line arguments to perform banking operations.
 
-    # Method to deposit money into the account
-     def deposit(self, amount):
-        if amount > 0:
-            self._account_balance += amount
-            print(f"Deposited: ${amount:.2f}")
+bank_account.py:
+Class Definition:
+
+Define a class named BankAccount.
+Use the __init__ method to initialize an account_balance attribute. Optionally, accept an initial balance parameter, defaulting to zero.
+Encapsulation and Behaviors:
+
+Implement deposit(amount), withdraw(amount), and display_balance() methods.
+deposit should add the specified amount to account_balance.
+withdraw should deduct the amount from account_balance if funds are sufficient, returning True; otherwise, return False and do not alter the balance.
+display_balance should print the current balance in a user-friendly format.
+main-0.py for Command Line Interaction:
+This script utilizes BankAccount through command line arguments for banking operations.
+
+import sys
+from bank_account import BankAccount
+
+def main():
+    account = BankAccount(100)  # Example starting balance
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <command>:<amount>")
+        print("Commands: deposit, withdraw, display")
+        sys.exit(1)
+
+    command, *params = sys.argv[1].split(':')
+    amount = float(params[0]) if params else None
+
+    if command == "deposit" and amount is not None:
+        account.deposit(amount)
+        print(f"Deposited: ${amount}")
+    elif command == "withdraw" and amount is not None:
+        if account.withdraw(amount):
+            print(f"Withdrew: ${amount}")
         else:
-            print("Deposit amount must be positive.")
+            print("Insufficient funds.")
+    elif command == "display":
+        account.display_balance()
+    else:
+        print("Invalid command.")
 
-    # Method to withdraw money from the account, only if there are sufficient funds
-     def withdraw(self, amount):
-        if amount > 0:
-            if self._account_balance >= amount:
-                self._account_balance -= amount
-                print(f"Withdrew: ${amount:.2f}")
-                return True
-            else:
-                print("Insufficient funds.")
-                return False
-        else:
-            print("Withdrawal amount must be positive.")
-            return False
+if __name__ == "__main__":
+    main()
+Sample Command Line Usage and Expected Outputs:
+Deposit:
+   python main-0.py deposit:50
+Expected Output: Deposited: $50
 
-    # Method to display the current account balance
-     def display_balance(self):
-        print(f"Current Balance: ${self._account_balance:.2f}")
+Withdraw with Sufficient Funds:
+   python main-0.py withdraw:20
+Expected Output: Withdrew: $20
+
+Withdraw with Insufficient Funds:
+   python main-0.py withdraw:150
+Expected Output: Insufficient funds.
+
+Display Balance:
+   python main-0.py display
+Expected Output: Current Balance: $[amount]
+
+Implementation Notes for you:
+Ensure your BankAccount class in bank_account.py correctly implements the specified functionalities and adheres to the principles of encapsulation.
+Use main.py to test your BankAccount class by performing various operations. Adjust the initial balance as needed for testing different scenarios.
+This task combines learning OOP concepts with practical command line interaction, enhancing your understanding of Python programming.
